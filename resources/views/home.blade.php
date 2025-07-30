@@ -93,10 +93,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @forelse($bestsellers as $product)
                     <div class="group">
-                        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden h-full flex flex-col">
                             <div class="relative">
-                                <div class="w-full h-80 bg-gradient-to-br from-orange-100 to-pink-100 flex items-center justify-center">
-                                    <svg class="w-20 h-20 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="w-full h-64 bg-gradient-to-br from-orange-100 to-pink-100 flex items-center justify-center">
+                                    <svg class="w-16 h-16 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                     </svg>
                                 </div>
@@ -113,20 +113,22 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-gray-900 text-lg mb-2">{{ $product->name }}</h3>
-                                <p class="text-gray-600 mb-4">{{ $product->short_description }}</p>
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="flex items-center space-x-2">
-                                        <span class="text-xl font-bold text-gray-900">{{ $product->formatted_price }}</span>
-                                        @if($product->compare_price)
-                                            <span class="text-sm text-gray-500 line-through">{{ $product->formatted_compare_price }}</span>
-                                        @endif
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-2">{{ $product->name }}</h3>
+                                <p class="text-gray-600 mb-4 text-sm line-clamp-3">{{ $product->short_description }}</p>
+                                <div class="mt-auto">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl font-bold text-gray-900">{{ $product->formatted_price }}</span>
+                                            @if($product->compare_price)
+                                                <span class="text-sm text-gray-500 line-through">{{ $product->formatted_compare_price }}</span>
+                                            @endif
+                                        </div>
                                     </div>
+                                    <button class="w-full cart-btn py-3 text-lg font-semibold rounded-xl">
+                                        Add to Cart
+                                    </button>
                                 </div>
-                                <button class="w-full cart-btn py-3 text-lg font-semibold">
-                                    Add to Cart
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -146,48 +148,64 @@
     </section>
     </div>
 
-    <!-- Featured Products -->
-        <div class="py-16 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Featured Products</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    @forelse($featured as $product)
-                        <div class="card">
+    <!-- Featured Products Section - INKEY List Style -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Products</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Handpicked products that deserve a spot in your routine
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                @forelse($featured as $product)
+                    <div class="group">
+                        <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden h-full flex flex-col">
                             <div class="relative">
-                                <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
-                                    <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="w-full h-64 bg-gradient-to-br from-orange-100 to-pink-100 flex items-center justify-center">
+                                    <svg class="w-16 h-16 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                     </svg>
                                 </div>
-                                <div class="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded text-sm font-semibold">
+                                <div class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                                     Featured
                                 </div>
+                                <div class="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <button class="bg-white rounded-full p-2 shadow-lg hover:shadow-xl">
+                                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="p-6">
-                                <h3 class="font-semibold text-gray-900 mb-2">{{ $product->name }}</h3>
-                                <p class="text-gray-600 text-sm mb-4">{{ $product->short_description }}</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <span class="text-lg font-bold text-gray-900">{{ $product->formatted_price }}</span>
-                                        @if($product->compare_price)
-                                            <span class="text-sm text-gray-500 line-through">{{ $product->formatted_compare_price }}</span>
-                                        @endif
+                            <div class="p-6 flex flex-col flex-grow">
+                                <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-2">{{ $product->name }}</h3>
+                                <p class="text-gray-600 mb-4 text-sm line-clamp-3">{{ $product->short_description }}</p>
+                                <div class="mt-auto">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center space-x-2">
+                                            <span class="text-xl font-bold text-gray-900">{{ $product->formatted_price }}</span>
+                                            @if($product->compare_price)
+                                                <span class="text-sm text-gray-500 line-through">{{ $product->formatted_compare_price }}</span>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <button class="btn-primary text-sm px-4 py-2">
+                                    <button class="w-full cart-btn py-3 text-lg font-semibold rounded-xl">
                                         Add to Cart
                                     </button>
                                 </div>
                             </div>
                         </div>
-                    @empty
-                        <div class="col-span-4 text-center py-8">
-                            <p class="text-gray-500">No featured products available</p>
-                        </div>
-                    @endforelse
-                </div>
+                    </div>
+                @empty
+                    <div class="col-span-4 text-center py-12">
+                        <p class="text-gray-500 text-lg">No featured products available</p>
+                    </div>
+                @endforelse
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Newsletter Section - INKEY List Style -->
     <section class="py-20" style="background: linear-gradient(135deg, #fef3e2 0%, #fdf2f8 100%);">

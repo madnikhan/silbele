@@ -109,4 +109,29 @@
   .hover-scale {
     @apply transition-all duration-300 transform hover:scale-105;
   }
+  
+  /* Text truncation utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Product card improvements */
+  .product-card-hover {
+    @apply transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl;
+  }
+  
+  /* Button improvements */
+  .btn-cart-modern {
+    @apply w-full bg-orange-500 text-white py-3 text-lg font-semibold rounded-xl hover:bg-orange-600 transition-all duration-300 transform hover:scale-105;
+  }
 }
