@@ -11,3 +11,8 @@ Route::get('/category/{slug}', [HomeController::class, 'category'])->name('categ
 Route::get('/admin', function () {
     return redirect('/admin');
 })->name('admin');
+
+// Health check route for Railway
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok', 'timestamp' => now()]);
+});
