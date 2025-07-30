@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Custom styles for Silbele */
+@layer components {
+  .btn-primary {
+    @apply bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition duration-300;
+  }
+  
+  .btn-secondary {
+    @apply border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition duration-300;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-r from-pink-50 to-purple-50;
+  }
+  
+  /* Brand colors matching the logo */
+  .brand-blue {
+    @apply text-blue-800;
+  }
+  
+  .brand-orange {
+    @apply bg-orange-500;
+  }
+  
+  .logo-circle {
+    @apply inline-block w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm;
+  }
+  
+  .logo-text {
+    @apply text-blue-800 font-bold;
+  }
+  
+  /* Cart button styles with custom color */
+  .cart-btn {
+    background-color: #E99459;
+    @apply text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition duration-300;
+  }
+  
+  .cart-counter {
+    background-color: #E99459;
+    @apply text-white text-xs rounded-full h-5 w-5 flex items-center justify-center;
+  }
+  
+  /* Category hover styles with brand color */
+  .category-hover {
+    background-color: #fef3e2;
+  }
+  
+  .category-hover:hover {
+    background-color: #fef3e2;
+  }
+  
+  .category-text-hover:hover {
+    color: #E99459;
+  }
+}
