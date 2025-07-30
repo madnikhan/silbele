@@ -14,10 +14,28 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
-    <!-- Fallback CSS if Vite fails -->
+    <!-- Fallback CSS for production -->
     @if(!app()->environment('local'))
         <link rel="stylesheet" href="{{ asset('build/assets/app-DKWS0HXk.css') }}">
     @endif
+    
+    <!-- Inline critical CSS for immediate loading -->
+    <style>
+        /* Critical CSS for immediate display */
+        .btn-primary { background-color: #f97316; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; transition: background-color 0.3s; }
+        .btn-primary:hover { background-color: #ea580c; }
+        .btn-secondary { border: 1px solid #d1d5db; color: #374151; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; transition: background-color 0.3s; }
+        .btn-secondary:hover { background-color: #f9fafb; }
+        .card { background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); overflow: hidden; transition: box-shadow 0.3s; }
+        .card:hover { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .cart-btn { background-color: #E99459; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; transition: background-color 0.3s; }
+        .cart-btn:hover { background-color: #ea580c; }
+        .cart-counter { background-color: #E99459; color: white; font-size: 0.75rem; border-radius: 9999px; height: 1.25rem; width: 1.25rem; display: flex; align-items: center; justify-content: center; }
+        .category-hover { background-color: #fef3e2; }
+        .category-hover:hover { background-color: #fef3e2; }
+        .category-text-hover:hover { color: #E99459; }
+        .gradient-bg { background: linear-gradient(to right, #fdf2f8, #faf5ff); }
+    </style>
 </head>
 <body class="font-sans antialiased bg-white">
     <!-- Header -->

@@ -3,6 +3,12 @@
 @section('title', 'Home')
 
 @section('content')
+    <!-- Debug Info -->
+    @if(app()->environment('local'))
+        <div style="background: yellow; padding: 10px; margin: 10px;">
+            Debug: Categories: {{ $categories->count() }}, Products: {{ $bestsellers->count() }}, Banners: {{ $banners->count() }}
+        </div>
+    @endif
     <!-- Hero Banner -->
     @if($banners->count() > 0)
         <div class="relative bg-gradient-to-r from-pink-50 to-purple-50 min-h-screen">
