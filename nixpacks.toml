@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ['php', 'php81Extensions.pdo', 'php81Extensions.pdo_sqlite', 'composer', 'nodejs', 'npm']
+nixPkgs = ['php', 'php81Extensions.pdo', 'php81Extensions.pdo_sqlite', 'php81Extensions.intl', 'php81Extensions.zip', 'php81Extensions.gd', 'php81Extensions.mbstring', 'composer', 'nodejs', 'npm']
 
 [phases.install]
 cmds = ['composer install --no-dev --optimize-autoloader', 'npm install']
