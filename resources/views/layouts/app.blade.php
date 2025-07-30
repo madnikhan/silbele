@@ -13,6 +13,11 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- Fallback CSS if Vite fails -->
+    @if(!app()->environment('local'))
+        <link rel="stylesheet" href="{{ asset('build/assets/app-DKWS0HXk.css') }}">
+    @endif
 </head>
 <body class="font-sans antialiased bg-white">
     <!-- Header -->

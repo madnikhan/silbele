@@ -23,6 +23,14 @@ php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 
+# Ensure storage link exists
+php artisan storage:link
+
+# Cache configs for production
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
 # Run migrations if needed (with error handling)
 echo "Running migrations..."
 php artisan migrate --force || echo "Migration failed, continuing..."

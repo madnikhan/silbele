@@ -37,8 +37,13 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-di
 RUN npm install
 RUN npm run build
 
+# Create storage link for public access
+RUN php artisan storage:link
+
 # Set proper permissions
 RUN chown -R www-data:www-data /var/www
+RUN chmod -R 755 /var/www/storage
+RUN chmod -R 755 /var/www/bootstrap/cache
 
 # Expose port 8000 for Laravel
 EXPOSE 8000
