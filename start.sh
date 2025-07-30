@@ -28,5 +28,5 @@ echo "Running migrations..."
 php artisan migrate --force || echo "Migration failed, continuing..."
 
 # Start the application
-echo "Starting Laravel server on port $PORT..."
-php artisan serve --host=0.0.0.0 --port $PORT 
+echo "Starting Laravel server on port ${PORT:-8000}..."
+php artisan serve --host=0.0.0.0 --port ${PORT:-8000} 

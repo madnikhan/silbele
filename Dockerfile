@@ -33,13 +33,19 @@ COPY . /var/www
 COPY --chown=www-data:www-data . /var/www
 
 # Install dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 RUN npm install
 RUN npm run build
 
-# Change current user to www
-USER www-data
+# Set proper permissions
+RUN chown -R www-data:www-data /var/www
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"] 
+# Expose port 8000 for Laravel
+EXPOSE 8000
+
+# Copy startup script and make it executable
+COPY start.sh /var/www/start.sh
+RUN chmod +x /var/www/start.sh
+
+# Start the application
+CMD ["/var/www/start.sh"] 
