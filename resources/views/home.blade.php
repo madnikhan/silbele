@@ -15,10 +15,10 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                            {{ $banners->first()->title ?? 'Discover Your Perfect Skincare Routine' }}
+                            Discover Your Perfect Skincare Routine
                         </h1>
                         <p class="text-xl text-gray-600 mb-8">
-                            {{ $banners->first()->description ?? 'Premium cosmetics formulated for every skin type. Transform your skin with our scientifically-backed products.' }}
+                            Premium cosmetics formulated for every skin type. Transform your skin with our scientifically-backed products.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4">
                             <a href="{{ route('shop') }}" class="btn-primary text-center">
@@ -49,7 +49,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Shop by Category</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                    @foreach($categories as $category)
+                    @forelse($categories as $category)
                         <a href="{{ route('category', $category->slug) }}" class="group">
                             <div class="bg-gray-50 rounded-lg p-6 text-center hover:bg-orange-50 transition duration-300 border border-gray-200">
                                 <div class="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center">
@@ -60,7 +60,11 @@
                                 <h3 class="font-semibold text-gray-900 group-hover:text-orange-600 transition duration-300">{{ $category->name }}</h3>
                             </div>
                         </a>
-                    @endforeach
+                    @empty
+                        <div class="col-span-6 text-center py-8">
+                            <p class="text-gray-500">No categories available</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -71,7 +75,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Bestsellers</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    @foreach($bestsellers as $product)
+                    @forelse($bestsellers as $product)
                         <div class="card">
                             <div class="relative">
                                 <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
@@ -101,7 +105,11 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-span-4 text-center py-8">
+                            <p class="text-gray-500">No products available</p>
+                        </div>
+                    @endforelse
                 </div>
                 <div class="text-center mt-12">
                     <a href="{{ route('shop') }}" class="cart-btn">
@@ -110,15 +118,14 @@
                 </div>
             </div>
         </div>
-    @endif
+    </div>
 
     <!-- Featured Products -->
-    @if($featured->count() > 0)
         <div class="py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Featured Products</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    @foreach($featured as $product)
+                    @forelse($featured as $product)
                         <div class="card">
                             <div class="relative">
                                 <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
@@ -146,7 +153,11 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="col-span-4 text-center py-8">
+                            <p class="text-gray-500">No featured products available</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
