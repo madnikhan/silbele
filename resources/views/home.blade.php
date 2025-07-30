@@ -10,8 +10,7 @@
         </div>
     @endif
     <!-- Hero Banner -->
-    @if($banners->count() > 0)
-        <div class="relative bg-gradient-to-r from-pink-50 to-purple-50 min-h-screen">
+    <div class="relative bg-gradient-to-r from-pink-50 to-purple-50 min-h-screen">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
@@ -43,10 +42,9 @@
                 </div>
             </div>
         </div>
-    @endif
+    </div>
 
     <!-- Categories -->
-    @if($categories->count() > 0)
         <div class="py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Shop by Category</h2>
@@ -66,10 +64,9 @@
                 </div>
             </div>
         </div>
-    @endif
+    </div>
 
     <!-- Bestsellers -->
-    @if($bestsellers->count() > 0)
         <div class="py-16 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Bestsellers</h2>
@@ -153,7 +150,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    </div>
 
     <!-- Newsletter -->
     <div class="py-16" style="background-color: #fef3e2;">
